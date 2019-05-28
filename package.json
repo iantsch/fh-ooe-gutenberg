@@ -1,0 +1,42 @@
+{
+  "name": "fh-ooe-gutenberg",
+  "version": "1.0.0",
+  "description": "Full SVG support for your WordPress Theme/Plugin",
+  "main": "src/InlineSvg.js",
+  "scripts": {
+    "dev": "webpack --watch --mode=development",
+    "build": "webpack --mode=production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iantsch/fh-ooe-gutenberg.git"
+  },
+  "keywords": [
+    "SVG",
+    "WordPress",
+    "Plugin"
+  ],
+  "author": "Christian Tschugg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iantsch/fh-ooe-gutenberg/issues"
+  },
+  "homepage": "https://github.com/iantsch/fh-ooe-gutenberg#readme",
+  "browserslist": [
+    "last 2 version",
+    "> 0.5%"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "core-js": "^2.6.5"
+  }
+}
