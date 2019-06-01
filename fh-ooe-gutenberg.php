@@ -18,7 +18,7 @@ if (!function_exists('get_svg')) {
 }
 
 if (!function_exists('wp_get_attachment_image_or_svg')){
-    function wp_get_attachment_image_or_svg($attachmentId, $inline = false, $size = 'thumbnail', $attr = '') {
+    function wp_get_attachment_image_or_svg($attachmentId, $size = 'thumbnail', $attr = '') {
         $attachedFile = get_post_meta($attachmentId, '_wp_attached_file', true);
         if (strpos($attachedFile, '.svg') !== false) {
             $key = basename($attachedFile,'.svg');
@@ -76,6 +76,7 @@ class Svg
         if (!static::hasSupport()) {
             return;
         }
+        add_action('enqueue_block_assets', [$this, 'enqueueBlock']);
     }
 
     static function hasSupport()
@@ -212,6 +213,10 @@ class Svg
         $svgMarkup .= $svg->markup;
         $svgMarkup .= '</svg>';
         return $svgMarkup;
+    }
+
+    public function enqueueBlock() {
+
     }
 }
 
