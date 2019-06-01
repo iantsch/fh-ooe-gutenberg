@@ -76,6 +76,7 @@ class Svg
         if (!static::hasSupport()) {
             return;
         }
+        add_action('render_block', [$this, 'renderSvg'], 10, 2);
         add_action('enqueue_block_assets', [$this, 'enqueueBlock']);
     }
 
@@ -216,7 +217,16 @@ class Svg
     }
 
     public function enqueueBlock() {
+        wp_enqueue_script(
+            static::$handle,
+            plugin_dir_url( __FILE__ ) . 'dist/svg.js',
+            ['wp-blocks', 'wp-i18n']
+        );
+    }
 
+    public function renderSvg($content, $block)
+    {
+        return $content;
     }
 }
 
