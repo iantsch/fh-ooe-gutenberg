@@ -1,8 +1,8 @@
 # Hands on Gutenberg 
 
-Der neue WordPress Frontend Editor
+_Der neue WordPress Block Editor_
 
-Das CMS WordPress steckt in rund 27% der Websites im World Wide Web. Mit Beginn 2019 wurde ein neues Zeitalter der 
+Das CMS WordPress steckt in rund 33% der Websites im World Wide Web. Mit Beginn 2019 wurde ein neues Zeitalter der 
 Content-Eingabe der Open-Source Community vorgestellt: Der Gutenberg Editor. Ein Frontend-Editor auf Block-Basis soll 
 den Bedürfnissen der breiten Basis nachkommen um flexibel und schnell Inhalte in das Web zu publizieren. Anhand eines 
 konkreten Beispiels werden in 90 Minuten die Grenzen, Möglichkeiten und Herausforderungen des Gutenberg Editors, denen 
@@ -10,7 +10,7 @@ sich der Web Entwickler stellen muss, dargestellt.
 
 ## Ziele
 
-* Einblick in WordPress mit Fokus auf den Gutenberg Editor
+* Einblick in WordPress mit Fokus auf den Block Editor
 * Einblick in Web-Komponenten auf Basis von React/JSX
 * Kennenlernen von WordPress Hooks
 * Programmieren eines WordPress Plugins auf Basis dieses Repositories

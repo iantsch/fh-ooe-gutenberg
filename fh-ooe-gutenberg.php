@@ -76,8 +76,6 @@ class Svg
         if (!static::hasSupport()) {
             return;
         }
-        add_action('render_block', [$this, 'renderSvg'], 10, 2);
-        add_action('enqueue_block_assets', [$this, 'enqueueBlock']);
     }
 
     static function hasSupport()
@@ -214,11 +212,6 @@ class Svg
         $svgMarkup .= $svg->markup;
         $svgMarkup .= '</svg>';
         return $svgMarkup;
-    }
-
-    public function renderSvg($content, $block)
-    {
-        return $content;
     }
 }
 
