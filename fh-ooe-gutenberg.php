@@ -64,7 +64,8 @@ class Svg
     private static $cssStyle = '--';
     private static $handle = 'fh-ooe/gutenberg';
     private static $blocks = [
-        'fh-ooe-gutenberg/svg'
+        'core/image',
+        'core/media-text',
     ];
 
     private function __construct()
@@ -80,6 +81,12 @@ class Svg
         }
         add_action('render_block', [$this, 'renderSvg'], 10, 2);
         add_action('enqueue_block_assets', [$this, 'enqueueBlock']);
+        add_filter('Svg/core/image/attachmentId', function () {
+            return 'id';
+        });
+        add_filter('Svg/core/media-text/attachmentId', function () {
+            return 'mediaId';
+        });
     }
 
     static function hasSupport()
@@ -222,16 +229,23 @@ class Svg
         wp_enqueue_script(
             static::$handle,
             plugin_dir_url( __FILE__ ) . 'dist/svg.js',
-            ['wp-blocks', 'wp-i18n', 'wp-editor', 'wp-components']
+            ['wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-compose']
         );
+
+        wp_localize_script(static::$handle, 'blocksToModify', apply_filters('Svg/blocksToModify', static::$blocks));
     }
 
     public function renderSvg($content, $block)
     {
-        if (!in_array($block['blockName'],  static::$blocks)) {
+        $blocks = apply_filters('Svg/BlocksToModify', static::$blocks);
+        if (!in_array($block['blockName'], $blocks)) {
             return $content;
         }
-        $svg = wp_get_attachment_image_or_svg($block['attrs']['attachmentId']);
+        if (!array_key_exists('svgInline', $block['attrs'])) {
+            return $content;
+        }
+        $attachmentId = apply_filters("Svg/{$block['blockName']}/attachmentId", 'id');
+        $svg = wp_get_attachment_image_or_svg($block['attrs'][$attachmentId]);
 
         return preg_replace("/<img[^>]+>/i", $svg, $content);
     }
