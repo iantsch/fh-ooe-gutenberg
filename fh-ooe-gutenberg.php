@@ -63,7 +63,9 @@ class Svg
     private static $baseClass = 'svg';
     private static $cssStyle = '--';
     private static $handle = 'fh-ooe/gutenberg';
-    private static $blocks = [];
+    private static $blocks = [
+        'fh-ooe-gutenberg/svg'
+    ];
 
     private function __construct()
     {
@@ -220,13 +222,18 @@ class Svg
         wp_enqueue_script(
             static::$handle,
             plugin_dir_url( __FILE__ ) . 'dist/svg.js',
-            ['wp-blocks', 'wp-i18n']
+            ['wp-blocks', 'wp-i18n', 'wp-editor', 'wp-components']
         );
     }
 
     public function renderSvg($content, $block)
     {
-        return $content;
+        if (!in_array($block['blockName'],  static::$blocks)) {
+            return $content;
+        }
+        $svg = wp_get_attachment_image_or_svg($block['attrs']['attachmentId']);
+
+        return preg_replace("/<img[^>]+>/i", $svg, $content);
     }
 }
 

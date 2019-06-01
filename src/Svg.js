@@ -1,27 +1,57 @@
 const { registerBlockType } = wp.blocks;
+const { MediaUpload } = wp.editor;
+const { Button } = wp.components;
 const {__} = wp.i18n;
 
 registerBlockType( 'fh-ooe-gutenberg/svg', {
-  title: __('Inline SVG', 'fh-ooe-gutenberg'),
+  title: __('Image or Svg', 'fh-ooe-gutenberg'),
   icon: 'carrot',
   category: 'layout',
   attributes: {
-    svg: {
+    attachmentId: {
       type: 'string',
-      source: 'html',
-      selector: '.svg-wrapper',
+      attribute: 'data-id',
+      selector: '.svg-or-img',
+    },
+    attachmentUrl: {
+      type: 'string',
     },
   },
-  edit(props) {
-    const svg = props.attributes.svg;
-    const onSvgChange = (e) => props.setAttributes({svg: e.target.value});
-    return (<div className="svg-text">
-      <div className="svg-wrapper" dangerouslySetInnerHTML={{__html: svg}} />
-      <textarea style={{width: '100%'}} rows="5" onChange={onSvgChange}>{svg}</textarea>
-    </div>);
+  edit({attributes, className, setAttributes}) {
+    const getImageButton = (openEvent) => {
+      if(attributes.attachmentUrl) {
+        return (
+          <img
+            src={ attributes.attachmentUrl }
+            onClick={ openEvent }
+            className="image"
+          />
+        );
+      }
+      else {
+        return (
+          <div className="button-container">
+            <Button
+              onClick={ openEvent }
+              className="button button-large"
+            >
+              {__('Select an image','fh-ooe-gutenberg')}
+            </Button>
+          </div>
+        );
+      }
+    };
+    return (
+      <MediaUpload
+        onSelect={ media => { console.log(media); setAttributes({ attachmentUrl: media.url, attachmentId: media.id }); } }
+        type="image"
+        value={ attributes.attachmentId }
+        render={ ({ open }) => getImageButton(open) } />
+    );
   },
-  save(props) {
-    const svg = props.attributes.svg;
-    return (<div className="svg-wrapper" dangerouslySetInnerHTML={{__html: svg}} />);
+  save({attributes: {attachmentId, attachmentUrl}, className}) {
+    return (<figure className={className}>
+      <img className="svg-or-img" data-id={attachmentId} src={attachmentUrl} />
+    </figure>);
   },
 });
