@@ -14,6 +14,7 @@ Folgende individuelle **filter** Hooks müssen erstellt und umgesetzt werden:
 
 Folgender **filter** Hook wird zur Umsetzung benötigt:
 * [blocks.registerBlockType](https://developer.wordpress.org/block-editor/developers/filters/block-filters/#blocks-registerblocktype) erlaubt die Attribute der Blöcke zu erweitern
+* [editor.BlockEdit](https://developer.wordpress.org/block-editor/developers/filters/block-filters/#editor-blockedit) Tauscht die BlockEdit Componente mit beliebiger HOC aus
 
 Folgende WordPress Komponenten werden benötigt:
 * [ToggleControl](https://developer.wordpress.org/block-editor/components/toggle-control/)
