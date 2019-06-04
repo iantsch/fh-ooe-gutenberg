@@ -15,6 +15,8 @@ registerBlockType( 'fh-ooe-gutenberg/svg', {
     },
     attachmentUrl: {
       type: 'string',
+      attribute: 'src',
+      selector: '.svg-or-img',
     },
   },
   edit({attributes, className, setAttributes}) {
