@@ -237,7 +237,7 @@ class Svg
 
     public function renderSvg($content, $block)
     {
-        $blocks = apply_filters('Svg/BlocksToModify', static::$blocks);
+        $blocks = apply_filters('Svg/blocksToModify', static::$blocks);
         if (!in_array($block['blockName'], $blocks)) {
             return $content;
         }
