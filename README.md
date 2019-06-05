@@ -48,8 +48,11 @@ Der Gastvortrag ist eine Chance zum aktiv Mitmachen und das aufgeschnappte Wisse
 9. Ins WordPress Backend einloggen, zB `http://localhost/wp-admin/plugins.php` und das Plugin `FH OÖ Gastvortrag - Hands on Gutenberg` aktivieren.
 10. In den Gastvortrag kommen und mitmachen.
 
+## Download
 
-### Über den Author
+Präsentationsfolien als [PDF](./assets/fh-ooe-gutenberg.pdf)
+
+## Über den Author
 
 Christian Tschugg ist Senior [Web Developer](https://mbt.wien) der [MMCAGENTUR](https://www.MMCAGENTUR.at) in Mödling und hat über 12 Jahre WordPress Erfahrung. Seine 
 Passion für JavaScript Frameworks haben den Wahl-Wiener tief in den Kern des Gutenberg-Editors eintauchen lassen.
