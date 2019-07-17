@@ -1,5 +1,7 @@
 # Hands on Gutenberg 
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/iantsch/fh-ooe-gutenberg.svg)](https://greenkeeper.io/)
+
 _Der neue WordPress Block Editor_
 
 Das CMS WordPress steckt in rund 33% der Websites im World Wide Web. Mit Beginn 2019 wurde ein neues Zeitalter der 
